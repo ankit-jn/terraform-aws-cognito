@@ -60,8 +60,8 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="client_allowed_oauth_flows"></a> [client_allowed_oauth_flows](#input\_client\_allowed\_oauth\_flows) | List of allowed OAuth flows (code, implicit, client_credentials). | `list(string)` | `null` | no |  |
 | <a name="client_allowed_oauth_scopes"></a> [client_allowed_oauth_scopes](#input\_client\_allowed\_oauth\_scopes) | List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin). | `list(string)` | `null` | no |  |
 | <a name="client_explicit_auth_flows"></a> [client_explicit_auth_flows](#input\_client\_explicit\_auth\_flows) | List of authentication flows. | `list(string)` | `null` | no |  |
-| <a name="client_token_validity_units"></a> [client_token_validity_units](#token\_validity\_units) | Configuration Map for units in which the validity times are represented in. | `map(string)` | `<pre>{<br>  access_token = "hours"<br>  id_token = "hours"<br>  refresh_token = "days"<br>}` | no |  |
-| <a name="client_token_validity"></a> [client_token_validity](#token\_validity) | Configuration Map of Time limits for all thr tokens after which tokens will no longer valid and cannot be used. | `map(number)` | `<pre>{<br>  access_token_validity = 1<br>  id_token_validity = 1<br>  refresh_token_validity = 60<br>}` | no |  |
+| <a name="client_token_validity_units"></a> [client_token_validity_units](#token\_validity\_units) | Configuration Map for units in which the validity times are represented in. | `map(string)` | <pre>{<br>  access_token = "hours"<br>  id_token = "hours"<br>  refresh_token = "days"<br>} | no |  |
+| <a name="client_token_validity"></a> [client_token_validity](#token\_validity) | Configuration Map of Time limits for all thr tokens after which tokens will no longer valid and cannot be used. | `map(number)` | <pre>{<br>  access_token_validity = 1<br>  id_token_validity = 1<br>  refresh_token_validity = 60<br>} | no |  |
 | <a name="client_enable_token_revocation"></a> [client_enable_token_revocation](#input\_client\_enable\_token\_revocation) | Flag to decide whether enable token revocation. | `bool` | `false` | no |  |
 | <a name="client_supported_identity_providers"></a> [client_supported_identity_providers](#input\_client\_supported\_identity\_providers) | List of provider names for the identity providers that are supported to the App clients. | `list(string)` | `null` | no |  |
 | <a name="client_prevent_user_existence_errors"></a> [client_prevent_user_existence_errors](#input\_client\_prevent\_user\_existence\_errors) | Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. | `string` | `"ENABLED"` | no |  |
@@ -75,8 +75,8 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | Name | Description | Type | Default | Required |
 |:------|:------|:------|:------|:------:|
 | <a name="email_subject"></a> [email_subject](#input\_email\_subject) | Subject line for email messages. | `string` | `"Your verification code"` | no |
-| <a name="email_message"></a> [email_message](#input\_email\_message) | Message template for email messages. | `string` | `"{username}, your verification code is `{####}`"` | no |
-| <a name="sms_message"></a> [sms_message](#input\_sms\_message) | Message template for SMS messages. | `string` | `"Your username is {username} and temporary password is `{####}`"` | no |
+| <a name="email_message"></a> [email_message](#input\_email\_message) | Message template for email messages. | `string` | <pre>"{username}, your verification code is \`{####}\`" | no |
+| <a name="sms_message"></a> [sms_message](#input\_sms\_message) | Message template for SMS messages. | `string` | <pre>"Your username is {username} and temporary password is \`{####}\`" | no |
 
 #### verification_message_template
 
@@ -84,10 +84,10 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 |:------|:------|:------|:------|:------:|
 | <a name="default_email_option"></a> [default_email_option](#input\_default\_email\_option) | Default email option. | `string` | `"CONFIRM_WITH_CODE"` | no |
 | <a name="email_subject"></a> [email_subject](#input\_email\_subject) | String representing the email verification subject. | `string` | `"Your verification code"` | no |
-| <a name="email_message"></a> [email_message](#input\_email\_message) | String representing the email verification message. | `string` | `"{username}, your verification code is `{####}`"` | no |
+| <a name="email_message"></a> [email_message](#input\_email\_message) | String representing the email verification message. | `string` | <pre>"{username}, your verification code is \`{####}\`" | no |
 | <a name="email_subject_by_link"></a> [email_subject_by_link](#input\_email\_subject\_by\_link) | Subject line for the email message template for sending a confirmation link to the user. | `string` | `"Your verification link"` | no |
-| <a name="email_message_by_link"></a> [email_message_by_link](#input\_email\_message\_by\_link) | Email message template for sending a confirmation link to the user, it must contain the {##Click Here##}. | `string` | `"Please click the link below to verify your email address. {##Verify Email##}"` | no |
-| <a name="sms_message"></a> [sms_message](#input\_sms\_message) | String representing the SMS verification message. | `string` | "Your username is {username} and temporary password is `{####}`" | no |
+| <a name="email_message_by_link"></a> [email_message_by_link](#input\_email\_message\_by\_link) | Email message template for sending a confirmation link to the user, it must contain the {##Click Here##}. | `string` | <pre>"Please click the link below to verify your email address. {##Verify Email##}" | no |
+| <a name="sms_message"></a> [sms_message](#input\_sms\_message) | String representing the SMS verification message. | `string` | <pre>"Your username is {username} and temporary password is \`{####}\`" | no |
 
 #### schemas
 
