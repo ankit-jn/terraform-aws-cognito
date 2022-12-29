@@ -39,3 +39,16 @@ module "user_pool" {
     app_clients = var.app_clients
     identity_providers = var.identity_providers
 }
+
+module "identity_pool" {
+    source = "./modules/identity-pool"
+    
+    count = var.create_identity_pool ? 1 : 0
+
+    identity_pool_name = var.identity_pool_name
+    
+    allow_unauthenticated_identities = var.allow_unauthenticated_identities
+    allow_classic_flow = var.allow_classic_flow
+
+    tags = var.tags
+}

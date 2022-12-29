@@ -5,11 +5,12 @@ A Terraform module for configuring Cognito user Pool
 ### Resources
 This module features the following components to be provisioned:
 
-- Cognito UserPool [[aws_cognito_user_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool)]
-- Cognito UserPool Domain [[aws_cognito_user_pool_domain](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_domain)]
+- Cognito User Pool [[aws_cognito_user_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool)]
+- Cognito User Pool Domain [[aws_cognito_user_pool_domain](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_domain)]
 - Cognito Resource Server [[aws_cognito_resource_server](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_resource_server)]
 - Cognito User Identity Provider [[aws_cognito_identity_provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_identity_provider)]
-- Cognito UserPool App Client [[aws_cognito_user_pool_client](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_client)]
+- Cognito User Pool App Client [[aws_cognito_user_pool_client](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_client)]
+- Cognito Identity Pool [[aws_cognito_identity_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_identity_pool)]
 
 ### Requirements
 
@@ -86,6 +87,15 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="client_prevent_user_existence_errors"></a> [client_prevent_user_existence_errors](#input\_client\_prevent\_user\_existence\_errors) | Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. | `string` | `"ENABLED"` | no |  |
 | <a name="client_enable_propagate_additional_user_context_data"></a> [client_enable_propagate_additional_user_context_data](#input\_client\_enable\_propagate\_additional\_user\_context\_data) | Activates the propagation of additional user context data. | `bool` | `false` | no |  |
 | <a name="app_clients"></a> [app_clients](#app\_client) | List of App Clients of userPool where each entry will be a client configuration map | `any` | `[]` | no |  |
+
+##### Identity Pool
+
+| Name | Description | Type | Default | Required | Example|
+|:------|:------|:------|:------|:------:|:------|
+| <a name="create_identity_pool"></a> [create_identity_pool](#input\_create\_identity\_pool) | Flag to decide if create Cognito Identity Pool. | `bool` | `false` | no |  |
+| <a name="identity_pool_name"></a> [identity_pool_name](#input\_identity\_pool\_name) | Name of the Identity Pool. Required when `create_identity_pool` is set true. | `string` | `null` | no |  |
+| <a name="allow_unauthenticated_identities"></a> [allow_unauthenticated_identities](#input\_allow\_unauthenticated\_identities) | Flag to decide whether the identity pool supports unauthenticated logins or not. | `bool` | `false` | no |  |
+| <a name="allow_classic_flow"></a> [allow_classic_flow](#input\_allow\_classic\_flow) | Flag to decide whether enables or disables the classic / basic authentication flow. | `bool` | `false` | no |  |
 
 ### Nested Configuration Maps:  
 
@@ -268,16 +278,18 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 
 | Name | Type | Description |
 |:------|:------|:------|
-| <a name="id"></a> [id](#output\_id) | `string` | ID of the user pool. |
-| <a name="arn"></a> [arn](#output\_arn) | `string` | ARN of the user pool. |
-| <a name="endpoint"></a> [endpoint](#output\_endpoint) | `string` | Endpoint name of the user pool. |
-| <a name="domain"></a> [domain](#output\_domain) | `string` | Holds the domain prefix if the user pool has a domain associated with it. |
-| <a name="custom_domain"></a> [custom_domain](#output\_custom\_domain) | `string` | A custom domain name that is provided to Amazon Cognito. |
-| <a name="domain_aws_account_id"></a> [domain_aws_account_id](#output\_domain\_aws\_account\_id) | `string` | The AWS account ID for the user pool owner. |
-| <a name="domain_cdn_arn"></a> [domain_cdn_arn](#output\_domain\_cdn\_arn) | `string` | The URL of the CloudFront distribution. |
-| <a name="domain_s3_bucket"></a> [domain_s3_bucket](#output\_domain\_s3\_bucket) | `string` | The S3 bucket where the static files for this domain are stored. |
-| <a name="domain_app_version"></a> [domain_app_version](#output\_domain\_app\_version) | `string` | The app version. |
-| <a name="app_client_ids"></a> [app_client_ids](#output\_app\_client\_ids) | `map(string)` | The map of App client IDs Key Pair `App Client Name: App Client Id>` |
+| <a name="user_pool_id"></a> [user_pool_id](#output\_user\_pool\_id) | `string` | ID of the user pool. |
+| <a name="user_pool_arn"></a> [user_pool_arn](#output\_user\_pool\_arn) | `string` | ARN of the user pool. |
+| <a name="user_pool_endpoint"></a> [user_pool_endpoint](#output\_user\_pool\_endpoint) | `string` | Endpoint name of the user pool. |
+| <a name="user_pool_domain"></a> [user_pool_domain](#output\_user\_pool\_domain) | `string` | Holds the domain prefix if the user pool has a domain associated with it. |
+| <a name="user_pool_custom_domain"></a> [user_pool_custom_domain](#output\_user\_pool\_custom\_domain) | `string` | A custom domain name that is provided to Amazon Cognito. |
+| <a name="user_pool_domain_aws_account_id"></a> [user_pool_domain_aws_account_id](#output\_user\_pool\_domain\_aws\_account\_id) | `string` | The AWS account ID for the user pool owner. |
+| <a name="user_pool_domain_cdn_arn"></a> [user_pool_domain_cdn_arn](#output\_user\_pool\_domain\_cdn\_arn) | `string` | The URL of the CloudFront distribution. |
+| <a name="user_pool_domain_s3_bucket"></a> [user_pool_domain_s3_bucket](#output\_user\_pool\_domain\_s3\_bucket) | `string` | The S3 bucket where the static files for this domain are stored. |
+| <a name="user_pool_domain_app_version"></a> [user_pool_domain_app_version](#output\_user\_pool\_domain\_app\_version) | `string` | The app version. |
+| <a name="user_pool_app_client_ids"></a> [user_pool_app_client_ids](#output\_user\_pool\_app\_client\_ids) | `map(string)` | The map of App client IDs Key Pair `App Client Name: App Client Id>` |
+| <a name="identity_pool_id"></a> [identity_pool_id](#output\_identity\_pool\_id) | `string` | ID of the identity pool. |
+| <a name="identity_pool_arn"></a> [identity_pool_arn](#output\_identity\_pool\_arn) | `string` | ARN of the identity pool. |
 
 ### Authors
 

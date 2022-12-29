@@ -2,7 +2,7 @@
 #### User Pool Specific Properties
 #########################################
 variable "user_pool_name" {
-    description = "Name of the User Pool. Required when `create_user_pool` is set true."
+    description = "Name of the User Pool."
     type        = string
 }
 
@@ -82,7 +82,7 @@ variable "certificate_arn" {
 }
 
 variable "tags" {
-  description = "A map of tags to assign to the UserPool."
+  description = "A map of tags to assign to the User Pool."
   type        = map(string)
 }
 

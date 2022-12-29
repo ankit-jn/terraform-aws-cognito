@@ -364,3 +364,30 @@ EOF
     type = any
     default = []
 }
+
+#########################################
+#### Identity Pool Specific Properties
+#########################################
+variable "create_identity_pool" {
+    description = "(Optional) Flag to decide if create Cognito Identity Pool."
+    type        = bool
+    default     = false
+}
+
+variable "identity_pool_name" {
+    description = "Name of the Identity Pool. Required when `create_identity_pool` is set true."
+    type        = string
+    default     = null
+}
+
+variable "allow_unauthenticated_identities" {
+    description = "Flag to decide whether the identity pool supports unauthenticated logins or not."
+    type        = bool
+    default     = false
+}
+
+variable "allow_classic_flow" {
+    description = "Flag to decide whether enables or disables the classic / basic authentication flow."
+    type        = bool
+    default     = false
+}
