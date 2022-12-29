@@ -8,6 +8,7 @@ This module features the following components to be provisioned:
 - Cognito UserPool [[aws_cognito_user_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool)]
 - Cognito UserPool Domain [[aws_cognito_user_pool_domain](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_domain)]
 - Cognito Resource Server [[aws_cognito_resource_server](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_resource_server)]
+- Cognito User Identity Provider [[aws_cognito_identity_provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_identity_provider)]
 - Cognito UserPool App Client [[aws_cognito_user_pool_client](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_client)]
 
 ### Requirements
