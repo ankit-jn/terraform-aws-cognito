@@ -149,6 +149,14 @@ variable "client_enable_propagate_additional_user_context_data" {
 }
 
 variable "app_clients" {
-    description = "List of App Clients of userPool where each entry will be a client configuration map"
+    description = "List of App Clients of userPool where each entry will be a client configuration map."
+    type = any
+}
+
+#########################################
+#### IDP Specific Properties
+#########################################
+variable "identity_providers" {
+    description = "List of Identity providers where each entry will be IDP configuration map."
     type = any
 }

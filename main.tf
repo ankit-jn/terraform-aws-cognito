@@ -37,4 +37,5 @@ module "user_pool" {
     client_enable_propagate_additional_user_context_data = var.client_enable_propagate_additional_user_context_data
     
     app_clients = var.app_clients
+    identity_providers = var.identity_providers
 }

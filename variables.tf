@@ -213,6 +213,28 @@ EOF
 }
 
 #########################################
+#### IDP Specific Properties
+#########################################
+variable "identity_providers" {
+    description = <<EOF
+List of Identity providers of userPool where each entry will be a IDP configuration map:
+
+provider_name: (Required) The provider name.
+provider_type: (Required) The provider type.
+provider_details: The map of provider details.
+    Google: client_id, client_secret, authorize_scopes
+    LoginWithAmazon: client_id, client_secret, authorize_scopes
+    Facebook: client_id, client_secret, authorize_scopes, api_version
+    SignInWithApple: client_id, team_id, key_id, private_key, authorize_scopes
+    OIDC: client_id, client_secret, attributes_request_method, oidc_issuer, authorize_scopes
+    SAML: MetadataFile or MetadataURL, IDPSignout
+idp_identifiers: (Optional) The list of identity providers.
+attribute_mapping: (Optional) The map of attribute mapping of user pool attributes.
+EOF
+    type = any
+}
+
+#########################################
 #### User Pool Client Specific Properties
 #########################################
 variable "client_follow_oauth_flows" {
@@ -231,12 +253,22 @@ variable "client_allowed_oauth_scopes" {
     description = "(Optional) List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin)."
     type        = list(string)
     default     = null
+
+    validation {
+        condition = var.client_allowed_oauth_scopes == null ? true : contains(["phone", "email", "openid", "profile", "aws.cognito.signin.user.admin"], var.client_allowed_oauth_scopes)
+        error_message = "Valid values for `client_allowed_oauth_scopes` are `phone`, `email`, `openid`, `profile` or `aws.cognito.signin.user.admin`."
+    }
 }
 
 variable "client_explicit_auth_flows" {
     description = "(Optional) List of authentication flows."
     type        = list(string)
     default     = null
+
+    validation {
+        condition = var.client_explicit_auth_flows == null ? true : contains(["code", "implicit", "client_crdentials"], var.client_explicit_auth_flows)
+        error_message = "Valid values for `client_explicit_auth_flows` are `code`, `implicit` or `client_crdentials`."
+    }
 }
 
 variable "client_token_validity_units" {
