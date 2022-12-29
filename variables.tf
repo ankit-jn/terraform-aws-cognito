@@ -1,3 +1,6 @@
+#########################################
+#### User Pool Specific Properties
+#########################################
 variable "create_user_pool" {
     description = "(Optional) Flag to decide if create Cognito User Pool."
     type        = bool
@@ -193,7 +196,24 @@ variable "tags" {
 }
 
 #########################################
-#### UserPool Client Specific Properties
+#### Resource Server Specific Properties
+#########################################
+variable "resource_servers" {
+    description = <<EOF
+List of resource server's configuration map
+
+identifier: (Required) An identifier for the resource server.
+name: (Required) A name for the resource server.
+scopes: (Optional) A list of Authorization Scope map.
+    name: (Required) The scope name.
+    description: (Required) The scope description.
+EOF
+    type = any
+    default = []
+}
+
+#########################################
+#### User Pool Client Specific Properties
 #########################################
 variable "client_follow_oauth_flows" {
     description = "(Optional) Flag to decide if App clients are allowed to follow the OAuth protocol when interacting with Cognito user pools."

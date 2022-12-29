@@ -7,6 +7,7 @@ This module features the following components to be provisioned:
 
 - Cognito UserPool [[aws_cognito_user_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool)]
 - Cognito UserPool Domain [[aws_cognito_user_pool_domain](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_domain)]
+- Cognito Resource Server [[aws_cognito_resource_server](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_resource_server)]
 - Cognito UserPool App Client [[aws_cognito_user_pool_client](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_client)]
 
 ### Requirements
@@ -48,9 +49,20 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="advanced_security_mode"></a> [advanced_security_mode](#input\_advanced\_security\_mode) | Mode of Advanced Security. | `string` | `"OFF"` | no |  |
 | <a name="lambda_config"></a> [lambda_config](#lambda\_config) | ARN of Lambda functions to trigger the different events. | `map(string)` | `{}` | no |  |
 | <a name="recovery_mechanisms"></a> [recovery_mechanisms](#input\_recovery\_mechanisms) | Map of recovery mechanisms with each entry is having key as mechanism name and value as priority. | `map(number)` | `{}` | no |  |
-| <a name="domain_name"></a> [domain_name](#input\_domain\_name) | Either Fully-qualified domain name (for custom domain) or name used as prefix for Amazon Cognito domain. | `string` | `"auth"` | no |  |
-| <a name="certificate_arn"></a> [certificate_arn](#input\_certificate\_arn) | The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain. | `string` | `null` | no |  |
 | <a name="tags"></a> [tags](#input\_tags) | A map of tags to assign to the UserPool. | `map(string)` | `{}` | no |  |
+
+##### User Pool Domain
+
+| Name | Description | Type | Default | Required |
+|:------|:------|:------|:------|:------:|
+| <a name="domain_name"></a> [domain_name](#input\_domain\_name) | Either Fully-qualified domain name (for custom domain) or name used as prefix for Amazon Cognito domain. | `string` | `"auth"` | no |
+| <a name="certificate_arn"></a> [certificate_arn](#input\_certificate\_arn) | The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain. | `string` | `null` | no |
+
+##### Resource Server
+
+| Name | Description | Type | Default | Required |
+|:------|:------|:------|:------|:------:|
+| <a name="resource_servers"></a> [resource_servers](#resource_server) | List of resource server's configuration map | `any` |  | no |
 
 ##### User Pool App Clients
 
@@ -144,6 +156,23 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="access_token"></a> [access_token](#input\_access\_token) |  Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. | `number` | `1` | no |
 | <a name="id_token"></a> [id_token](#input\_id\_token) | Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. | `number` | `1` | no |
 | <a name="refresh_token"></a> [refresh_token](#input\_refresh\_token) | Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. | `number` | `60` | no |
+
+#### resource_server
+
+| Name | Description | Type | Default | Required |
+|:------|:------|:------|:------|:------:|
+| <a name="identifier"></a> [identifier](#input\_identifier) | An identifier for the resource server. | `string` |  | yes |
+| <a name="name"></a> [name](#input\_name) | A name for the resource server. | `string` |  | yes |
+| <a name="scopes"></a> [scopes](#authorization_scope) | A list of Authorization Scope map. | `list(string)` | `[]` | no |
+
+#### authorization_scope
+
+- Authorization Scope for Cognito Resource Server
+
+| Name | Description | Type | Default | Required |
+|:------|:------|:------|:------|:------:|
+| <a name="name"></a> [name](#input\_name) | The scope name. | `string` |  | yes |
+| <a name="description"></a> [description](#input\_description) | The scope description. | `string` |  | yes |
 
 #### app_client
 

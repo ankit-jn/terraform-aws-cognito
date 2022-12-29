@@ -1,8 +1,8 @@
 resource aws_cognito_user_pool_client "this" {
 
-    for_each = var.create_user_pool ? {for client in var.app_clients: client.name => client} : {}
+    for_each = { for client in var.app_clients: client.name => client }
 
-    user_pool_id = aws_cognito_user_pool.this[0].id
+    user_pool_id = aws_cognito_user_pool.this.id
     name = each.key
 
     allowed_oauth_flows_user_pool_client = try(each.value.follow_oauth_flows, var.client_follow_oauth_flows)
