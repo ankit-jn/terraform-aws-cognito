@@ -185,53 +185,53 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 #### provider_details
 
 ##### IDP: `Google`
-| Name | Description | Type | Required |
-|:------|:------|:------|:------:|
-| <a name="client_id"></a> [client_id](#input\_client\_id) |  | `string` | yes |
-| <a name="client_secret"></a> [client_secret](#input\_client\_secret) |  | `string` | yes |
-| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) |  | `string` | yes |
+| Name | Type | Required |
+|:------|:------|:------:|
+| <a name="client_id"></a> [client_id](#input\_client\_id) | `string` | yes |
+| <a name="client_secret"></a> [client_secret](#input\_client\_secret) | `string` | yes |
+| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) | `string` | yes |
 
 ##### IDP: `LoginWithAmazon`
-| Name | Description | Type | Default | Required |
-|:------|:------|:------|:------|:------:|
-| <a name="client_id"></a> [client_id](#input\_client\_id) |  | `string` | yes |
-| <a name="client_secret"></a> [client_secret](#input\_client\_secret) |  | `string` | yes |
-| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) |  | `string` | yes |
+| Name | Type | Required |
+|:------|:------|:------:|
+| <a name="client_id"></a> [client_id](#input\_client\_id) | `string` | yes |
+| <a name="client_secret"></a> [client_secret](#input\_client\_secret) | `string` | yes |
+| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) | `string` | yes |
 
 ##### IDP: `Facebook`
-| Name | Description | Type | Default | Required |
-|:------|:------|:------|:------|:------:|
-| <a name="client_id"></a> [client_id](#input\_client\_id) |  | `string` | yes |
-| <a name="client_secret"></a> [client_secret](#input\_client\_secret) |  | `string` | yes |
-| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) |  | `string` | yes |
-| <a name="api_version"></a> [api_version](#input\_api\_version) |  | `string` | yes |
+| Name | Type | Required |
+|:------|:------|:------:|
+| <a name="client_id"></a> [client_id](#input\_client\_id) | `string` | yes |
+| <a name="client_secret"></a> [client_secret](#input\_client\_secret) | `string` | yes |
+| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) | `string` | yes |
+| <a name="api_version"></a> [api_version](#input\_api\_version) | `string` | yes |
 
 ##### IDP: `SignInWithApple`
-| Name | Description | Type | Default | Required |
-|:------|:------|:------|:------|:------:|
-| <a name="client_id"></a> [client_id](#input\_client\_id) |  | `string` | yes |
-| <a name="team_id"></a> [team_id](#input\_team\_id) |  | `string` | yes |
-| <a name="key_id"></a> [key_id](#input\_key\_id) |  | `string` | yes |
-| <a name="private_key"></a> [private_key](#input\_private\_key) |  | `string` | yes |
-| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) |  | `string` | yes |
+| Name | Type | Required |
+|:------|:------|:------:|
+| <a name="client_id"></a> [client_id](#input\_client\_id) | `string` | yes |
+| <a name="team_id"></a> [team_id](#input\_team\_id) | `string` | yes |
+| <a name="key_id"></a> [key_id](#input\_key\_id) | `string` | yes |
+| <a name="private_key"></a> [private_key](#input\_private\_key) | `string` | yes |
+| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) | `string` | yes |
 
 ##### IDP: `OIDC`
-| Name | Description | Type | Default | Required |
-|:------|:------|:------|:------|:------:|
-| <a name="client_id"></a> [client_id](#input\_client\_id) |  | `string` | yes |
-| <a name="client_secret"></a> [client_secret](#input\_client\_secret) |  | `string` | yes |
-| <a name="attributes_request_method"></a> [attributes_request_method](#input\_attributes\_request\_method) |  | `string` | yes |
-| <a name="oidc_issuer"></a> [oidc_issuer](#input\_oidc\_issuer) |  | `string` | yes |
-| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) |  | `string` | yes |
+| Name | Type | Required |
+|:------|:------|:------:|
+| <a name="client_id"></a> [client_id](#input\_client\_id) | `string` | yes |
+| <a name="client_secret"></a> [client_secret](#input\_client\_secret) | `string` | yes |
+| <a name="attributes_request_method"></a> [attributes_request_method](#input\_attributes\_request\_method) | `string` | yes |
+| <a name="oidc_issuer"></a> [oidc_issuer](#input\_oidc\_issuer) | `string` | yes |
+| <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) | `string` | yes |
 
 ##### IDP: `SAML`
 - Either `MetadataFile` or `MetadataURL` is required.
 
-| Name | Description | Type | Default | Required |
-|:------|:------|:------|:------|:------:|
-| <a name="MetadataFile"></a> [MetadataFile](#input\_MetadataFile) |  | `string` | yes |
-| <a name="MetadataURL"></a> [MetadataURL](#input\_MetadataURL) |  | `string` | yes |
-| <a name="IDPSignout"></a> [IDPSignout](#input\_client\_secret) |  | `string` | no |
+| Name | Type | Required |
+|:------|:------|:------:|
+| <a name="MetadataFile"></a> [MetadataFile](#input\_MetadataFile) | `string` | yes |
+| <a name="MetadataURL"></a> [MetadataURL](#input\_MetadataURL) | `string` | yes |
+| <a name="IDPSignout"></a> [IDPSignout](#input\_client\_secret) | `string` | no |
 
 #### authorization_scope
 
