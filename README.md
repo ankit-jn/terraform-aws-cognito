@@ -178,9 +178,9 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 |:------|:------|:------|:------|:------:|
 | <a name="provider_name"></a> [provider_name](#input\_provider\_name) | The provider name. | `string` |  | yes |
 | <a name="provider_type"></a> [provider_type](#input\_provider\_type) | The provider type. | `string` |  | yes |
-| <a name="provider_details"></a> [provider_details](#provider\_details) | The map of provider details. | `string` |  | yes |
-| <a name="idp_identifiers"></a> [idp_identifiers](#input\_idp\_identifiers) | The list of identity providers. | `string` |  | no |
-| <a name="attribute_mapping"></a> [attribute_mapping](#input\_attribute\_mapping) | The map of attribute mapping of user pool attributes. | `string` |  | no |
+| <a name="provider_details"></a> [provider_details](#provider\_details) | The map of provider details. | `map(string)` |  | yes |
+| <a name="idp_identifiers"></a> [idp_identifiers](#input\_idp\_identifiers) | The list of identity providers. | `list(string)` |  | no |
+| <a name="attribute_mapping"></a> [attribute_mapping](#input\_attribute\_mapping) | The map of attribute mapping of user pool attributes. | `map(string)` |  | no |
 
 #### provider_details
 
