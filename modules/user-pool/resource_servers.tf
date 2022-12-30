@@ -5,7 +5,7 @@ resource aws_cognito_resource_server "this" {
     user_pool_id = aws_cognito_user_pool.this.id
 
     name = each.key
-    identifier = each.value.identitifier
+    identifier = each.value.identifier
 
     ## Authorization Scope
     dynamic "scope" {

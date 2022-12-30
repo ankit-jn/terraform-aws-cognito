@@ -180,7 +180,7 @@ variable "recovery_mechanisms" {
 variable "domain_name" {
     description = "(Optional) Either Fully-qualified domain name (for custom domain) or name used as prefix for Amazon Cognito domain."
     type        = string
-    default     = "auth"
+    default     = null
 }
 
 variable "certificate_arn" {
@@ -222,11 +222,11 @@ List of Identity providers of userPool where each entry will be a IDP configurat
 provider_name: (Required) The provider name.
 provider_type: (Required) The provider type.
 provider_details: The map of provider details.
-    Google: client_id, client_secret, authorize_scopes
-    LoginWithAmazon: client_id, client_secret, authorize_scopes
-    Facebook: client_id, client_secret, authorize_scopes, api_version
+    Google: client_id, client_secret, authorize_scopes, oidc_issuer, authorize_url, token_url, token_request_method, attributes_url, attributes_url_add_attributes
+    LoginWithAmazon: client_id, client_secret, authorize_scopes, authorize_url, token_url, token_request_method, attributes_url, attributes_url_add_attributes
+    Facebook: client_id, client_secret, authorize_scopes, authorize_url, token_url, token_request_method, attributes_url, attributes_url_add_attributes
     SignInWithApple: client_id, team_id, key_id, private_key, authorize_scopes
-    OIDC: client_id, client_secret, attributes_request_method, oidc_issuer, authorize_scopes
+    OIDC: client_id, client_secret, authorize_scopes, oidc_issuer, attributes_request_method, attributes_url_add_attributes
     SAML: MetadataFile or MetadataURL, IDPSignout
 idp_identifiers: (Optional) The list of identity providers.
 attribute_mapping: (Optional) The map of attribute mapping of user pool attributes.
@@ -267,8 +267,8 @@ variable "client_explicit_auth_flows" {
     default     = null
 
     validation {
-        condition = var.client_explicit_auth_flows == null ? true : contains(["code", "implicit", "client_crdentials"], var.client_explicit_auth_flows)
-        error_message = "Valid values for `client_explicit_auth_flows` are `code`, `implicit` or `client_crdentials`."
+        condition = var.client_explicit_auth_flows == null ? true : contains(["ADMIN_NO_SRP_AUTH", "CUSTOM_AUTH_FLOW_ONLY", "USER_PASSWORD_AUTH", "ALLOW_ADMIN_USER_PASSWORD_AUTH", "ALLOW_ADMIN_USER_PASSWORD_AUTH", "ALLOW_CUSTOM_AUTH", "ALLOW_USER_PASSWORD_AUTH", "ALLOW_USER_SRP_AUTH", "ALLOW_REFRESH_TOKEN_AUTH"], var.client_explicit_auth_flows)
+        error_message = "Valid values for `client_explicit_auth_flows` are `ADMIN_NO_SRP_AUTH`, `CUSTOM_AUTH_FLOW_ONLY`, `USER_PASSWORD_AUTH`, `ALLOW_ADMIN_USER_PASSWORD_AUTH`, `ALLOW_CUSTOM_AUTH`, `ALLOW_USER_PASSWORD_AUTH`, `ALLOW_USER_SRP_AUTH` or `ALLOW_REFRESH_TOKEN_AUTH`."
     }
 }
 

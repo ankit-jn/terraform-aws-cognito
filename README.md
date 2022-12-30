@@ -205,6 +205,14 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="client_id"></a> [client_id](#input\_client\_id) | `string` | yes |
 | <a name="client_secret"></a> [client_secret](#input\_client\_secret) | `string` | yes |
 | <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) | `string` | yes |
+| <a name="oidc_issuer"></a> [oidc_issuer](#input\_oidc\_issuer) | `string` | yes |
+| <a name="authorize_url"></a> [authorize_url](#input\_authorize\_url) | `string` | yes |
+| <a name="token_url"></a> [token_url](#input\_token\_url) | `string` | yes |
+| <a name="token_request_method"></a> [token_request_method](#input\_token\_request\_method) | `string` | yes |
+| <a name="attributes_url"></a> [attributes_url](#input\_attributes\_url) | `string` | yes |
+| <a name="attributes_url_add_attributes"></a> [attributes_url_add_attributes](#input\_attributes\_url\_add\_attributes) | `bool` | yes |
+
+oidc_issuer
 
 ##### IDP: `LoginWithAmazon`
 | Name | Type | Required |
@@ -212,6 +220,11 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="client_id"></a> [client_id](#input\_client\_id) | `string` | yes |
 | <a name="client_secret"></a> [client_secret](#input\_client\_secret) | `string` | yes |
 | <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) | `string` | yes |
+| <a name="authorize_url"></a> [authorize_url](#input\_authorize\_url) | `string` | yes |
+| <a name="token_url"></a> [token_url](#input\_token\_url) | `string` | yes |
+| <a name="token_request_method"></a> [token_request_method](#input\_token\_request\_method) | `string` | yes |
+| <a name="attributes_url"></a> [attributes_url](#input\_attributes\_url) | `string` | yes |
+| <a name="attributes_url_add_attributes"></a> [attributes_url_add_attributes](#input\_attributes\_url\_add\_attributes) | `bool` | yes |
 
 ##### IDP: `Facebook`
 | Name | Type | Required |
@@ -219,7 +232,11 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="client_id"></a> [client_id](#input\_client\_id) | `string` | yes |
 | <a name="client_secret"></a> [client_secret](#input\_client\_secret) | `string` | yes |
 | <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) | `string` | yes |
-| <a name="api_version"></a> [api_version](#input\_api\_version) | `string` | yes |
+| <a name="authorize_url"></a> [authorize_url](#input\_authorize\_url) | `string` | yes |
+| <a name="token_url"></a> [token_url](#input\_token\_url) | `string` | yes |
+| <a name="token_request_method"></a> [token_request_method](#input\_token\_request\_method) | `string` | yes |
+| <a name="attributes_url"></a> [attributes_url](#input\_attributes\_url) | `string` | yes |
+| <a name="attributes_url_add_attributes"></a> [attributes_url_add_attributes](#input\_attributes\_url\_add\_attributes) | `bool` | yes |
 
 ##### IDP: `SignInWithApple`
 | Name | Type | Required |
@@ -234,10 +251,11 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | Name | Type | Required |
 |:------|:------|:------:|
 | <a name="client_id"></a> [client_id](#input\_client\_id) | `string` | yes |
-| <a name="client_secret"></a> [client_secret](#input\_client\_secret) | `string` | yes |
-| <a name="attributes_request_method"></a> [attributes_request_method](#input\_attributes\_request\_method) | `string` | yes |
-| <a name="oidc_issuer"></a> [oidc_issuer](#input\_oidc\_issuer) | `string` | yes |
+| <a name="client_secret"></a> [client_secret](#input\_client\_secret) | `string` | no |
 | <a name="authorize_scopes"></a> [authorize_scopes](#input\_authorize\_scopes) | `string` | yes |
+| <a name="oidc_issuer"></a> [oidc_issuer](#input\_oidc\_issuer) | `string` | yes |
+| <a name="attributes_request_method"></a> [attributes_request_method](#input\_attributes\_request\_method) | `string` | yes |
+| <a name="attributes_url_add_attributes"></a> [attributes_url_add_attributes](#input\_attributes\_url\_add\_attributes) | `bool` | no |
 
 ##### IDP: `SAML`
 - Either `MetadataFile` or `MetadataURL` is required.

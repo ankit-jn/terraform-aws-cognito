@@ -8,7 +8,7 @@ resource aws_cognito_user_pool_client "this" {
     allowed_oauth_flows_user_pool_client = try(each.value.follow_oauth_flows, var.client_follow_oauth_flows)
     allowed_oauth_flows = try(each.value.allowed_oauth_flows, var.client_allowed_oauth_flows)
     allowed_oauth_scopes = try(each.value.allowed_oauth_scopes, var.client_allowed_oauth_scopes)
-    explicit_auth_flows = try(each.value.allowed_oauth_scopes, var.client_explicit_auth_flows)
+    explicit_auth_flows = try(each.value.explicit_auth_flows, var.client_explicit_auth_flows)
 
     token_validity_units {
         access_token = try(each.value.token_validity_units.access_unit, try(var.client_token_validity_units.access_unit, "hours")) 
