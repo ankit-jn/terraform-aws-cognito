@@ -1,6 +1,6 @@
 ## ARJ-Stack: AWS Cognito Terraform module
 
-A Terraform module for configuring Cognito user Pool
+A Terraform module for configuring Cognito UserPool/Identity Pool
 
 ### Resources
 This module features the following components to be provisioned:
