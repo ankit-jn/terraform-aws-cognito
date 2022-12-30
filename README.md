@@ -36,7 +36,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 
 | Name | Description | Type | Default | Required | Example|
 |:------|:------|:------|:------|:------:|:------|
-| <a name="create_user_pool"></a> [create_user_pool](#input\_create\_user\_pool) | Flag to decide if create Cognito User Pool. | `bool` | `true` | no |  |
+| <a name="create_user_pool"></a> [create_user_pool](#input\_create\_user\_pool) | Flag to decide if create Cognito User Pool. | `bool` | `false` | no |  |
 | <a name="user_pool_name"></a> [user_pool_name](#input\_user\_pool\_name) | Name of the User Pool. Required when `create_user_pool` is set true. | `string` | `null` | no |  |
 | <a name="allow_only_admin_to_create_user_profile"></a> [allow_only_admin_to_create_user_profile](#input\_allow\_only\_admin\_to\_create\_user\_profile) | Flag to decide if only the administrator is allowed to create user profiles. | `bool` | `false` | no |  |
 | <a name="invite_message_template"></a> [invite_message_template](#invite\_message\_template) | Configuration Map for Invite message template while creating user profile | `map(string)` | `{}` | no |  |
@@ -96,6 +96,11 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="identity_pool_name"></a> [identity_pool_name](#input\_identity\_pool\_name) | Name of the Identity Pool. Required when `create_identity_pool` is set true. | `string` | `null` | no |  |
 | <a name="allow_unauthenticated_identities"></a> [allow_unauthenticated_identities](#input\_allow\_unauthenticated\_identities) | Flag to decide whether the identity pool supports unauthenticated logins or not. | `bool` | `false` | no |  |
 | <a name="allow_classic_flow"></a> [allow_classic_flow](#input\_allow\_classic\_flow) | Flag to decide whether enables or disables the classic / basic authentication flow. | `bool` | `false` | no |  |
+| <a name="cognito_identity_providers"></a> [cognito_identity_providers](#cognito\_identity\_providers) | A list of map for Amazon Cognito Identity user pools and their client IDs. | `list(map(any))` | `[]` | no |  |
+| <a name="saml_providers"></a> [saml_providers](#input\_saml\_providers) | Flag to decide whether enables or disables the classic / basic authentication flow. | `list(string)` | `[]` | no |  |
+| <a name="openid_connect_providers"></a> [openid_connect_providers](#input\_openid\_connect\_providers) | A list of OpendID Connect provider for your identity. | `list(string)` | `[]` | no |  |
+| <a name="supported_login_providers"></a> [supported_login_providers](#input\_supported\_login\_providers) | Key-Value pairs mapping provider names to provider app IDs. | `map(string)` | `{}` | no |  |
+| <a name="developer_provider_name"></a> [developer_provider_name](#input\_developer\_provider\_name) | The domain by which Cognito will refer to your users. | `string` | `null` | no |  |
 
 ### Nested Configuration Maps:  
 
@@ -251,6 +256,14 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 |:------|:------|:------|:------|:------:|
 | <a name="name"></a> [name](#input\_name) | The scope name. | `string` |  | yes |
 | <a name="description"></a> [description](#input\_description) | The scope description. | `string` |  | yes |
+
+#### cognito_identity_providers
+
+| Name | Description | Type | Default | Required |
+|:------|:------|:------|:------|:------:|
+| <a name="client_id"></a> [client_id](#input\_client\_id) | The client ID for the Amazon Cognito Identity User Pool. | `string` |  | yes |
+| <a name="provider_name"></a> [provider_name](#input\_provider\_name) | The endpoint for an Amazon Cognito Identity User Pool. | `string` |  | yes |
+| <a name="server_side_token_check"></a> [server_side_token_check](#input\_server\_side\_token\_check) | Flag to decide whether server-side token validation is enabled for the identity provider’s token or not. | `bool` | `false` | no |
 
 #### app_client
 

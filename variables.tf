@@ -4,7 +4,7 @@
 variable "create_user_pool" {
     description = "(Optional) Flag to decide if create Cognito User Pool."
     type        = bool
-    default     = true
+    default     = false
 }
 
 variable "user_pool_name" {
@@ -232,6 +232,7 @@ idp_identifiers: (Optional) The list of identity providers.
 attribute_mapping: (Optional) The map of attribute mapping of user pool attributes.
 EOF
     type = any
+    default = []
 }
 
 #########################################
@@ -381,13 +382,49 @@ variable "identity_pool_name" {
 }
 
 variable "allow_unauthenticated_identities" {
-    description = "Flag to decide whether the identity pool supports unauthenticated logins or not."
+    description = "(Optional) Flag to decide whether the identity pool supports unauthenticated logins or not."
     type        = bool
     default     = false
 }
 
 variable "allow_classic_flow" {
-    description = "Flag to decide whether enables or disables the classic / basic authentication flow."
+    description = "(Optional) Flag to decide whether enables or disables the classic / basic authentication flow."
     type        = bool
     default     = false
+}
+
+variable "cognito_identity_providers" {
+    description = <<EOF
+(Optional) A list of Map for Amazon Cognito Identity user pools and their client IDs.
+
+client_id: (Required) The client ID for the Amazon Cognito Identity User Pool.
+provider_name: (Required) The endpoint for an Amazon Cognito Identity User Pool.
+server_side_token_check: (Optional) Flag to decide whether server-side token validation is enabled for the identity provider’s token or not.
+EOF
+    type        = list(map(any))
+    default     = []
+}
+
+variable "saml_providers" {
+    description = "(Optional) A list of Amazon Resource Names (ARNs) of the SAML provider for your identity."
+    type        = list(string)
+    default     = []
+}
+
+variable "openid_connect_providers" {
+    description = "(Optional) A list of OpendID Connect provider for your identity."
+    type        = list(string)
+    default     = []
+}
+
+variable "supported_login_providers" {
+    description = "(Optional) Key-Value pairs mapping provider names to provider app IDs."
+    type        = map(string)
+    default     = {}
+}
+
+variable "developer_provider_name" {
+    description = "(Optional) The domain by which Cognito will refer to your users."
+    type        = string
+    default     = null
 }

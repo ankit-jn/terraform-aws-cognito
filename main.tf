@@ -50,5 +50,11 @@ module "identity_pool" {
     allow_unauthenticated_identities = var.allow_unauthenticated_identities
     allow_classic_flow = var.allow_classic_flow
 
+    cognito_identity_providers  = var.cognito_identity_providers
+    saml_providers              = var.saml_providers
+    openid_connect_providers    = var.openid_connect_providers
+    supported_login_providers   = var.supported_login_providers
+    developer_provider_name     = var.developer_provider_name
+
     tags = var.tags
 }
